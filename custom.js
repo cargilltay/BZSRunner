@@ -25,9 +25,9 @@ function updateScoreBoard(){
 function keyPressed() {
 	if (key == ' ') {
 		//remove this if statement to basically get flappy bird physics 
-		if (person.pos.y == height) {
+		//if (person.pos.y == height) {
 			person.jump();
-		}
+		//}
 	}
 }
 

@@ -1,9 +1,10 @@
 function TerrainObject() {
 	//height of objects
-	this.heightMod = random(height / 2);
+	this.heightMod = random(height/3);
+	this.vertMod = random(height/3);
 	this.x = width;
 	this.w = 20;
-	this.speed = 2;
+	this.speed = 3;
 	this.highLight = false;
 	this.wasHit = false;
 	this.wasCleared = false;
@@ -13,6 +14,7 @@ function TerrainObject() {
 		if (this.highLight) {
 			fill(255, 0, 0);
 		}
+		rect(this.x, 0, this.w, this.vertMod);
 		rect(this.x, height - this.heightMod, this.w, this.heightMod);
 	}
 
@@ -25,7 +27,7 @@ function TerrainObject() {
 	}
 
 	this.isHit = function(obj) {
-		if (obj.pos.y > height - this.heightMod) {
+		if ((obj.pos.y - obj.h) < this.vertMod || obj.pos.y > height - this.heightMod) {
 			if ((obj.pos.x + obj.w) > this.x && obj.pos.x < this.x + this.w) {
 				this.highLight = true;
 				this.wasHit = true;
