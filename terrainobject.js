@@ -1,15 +1,24 @@
-function TerrainObject() {
+function TerrainObject(difficultyModifier) {
 	//height of objects
-	this.heightMod = random(height/3);
-	this.vertMod = random(height/3);
+	this.vertMod;
 	this.x = width;
 	this.w = 20;
-	this.speed = 3;
 	this.highLight = false;
 	this.wasHit = false;
 	this.wasCleared = false;
+	this.currentDifficultyModifier = difficultyModifier;
+	this.heightMod = random(height - 150)
+	this.vertMod = (height - this.heightMod) - 150;
+	//this.vertMod = random(height / (3 * (1 + (this.currentDifficultyModifier / 100))))
+	// this.heightMod = random(height / (3 * (1 + (this.currentDifficultyModifier)/ 100)))
+	// this.vertMod = random(height / (3 * (1 + (this.currentDifficultyModifier)/ 100)))
+	this.speed = 3 * (1 + (this.currentDifficultyModifier / 20))
+	console.log(this.speed);
 
 	this.show = function() {
+
+
+
 		fill(255);
 		if (this.highLight) {
 			fill(255, 0, 0);
@@ -18,7 +27,7 @@ function TerrainObject() {
 		rect(this.x, height - this.heightMod, this.w, this.heightMod);
 	}
 
-	this.update = function() {
+	this.updatePosition = function() {
 		this.x -= this.speed;
 	}
 

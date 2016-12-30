@@ -5,9 +5,9 @@ function Person() {
 	this.img = loadImage("assets/BZSMan.png");
 
 	this.jump = function() {
-		var jump = createVector(0, -2.5);
+		var jump = createVector(0, -5.5);
 		person.applyForce(jump);
-		console.log(this.acc);
+		//console.log(this.acc);
 	}
 
 	this.applyForce = function(force) {
